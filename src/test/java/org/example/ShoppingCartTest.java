@@ -124,4 +124,16 @@ class ShoppingCartTest {
         assertEquals(shoppingCart.getTotalPrice(), 100.0);
 
     }
+    @Test
+    void if_animal_has_legs_multiply_number_of_legs_for_4point2() {
+        ShoppingCart shoppingCart = new ShoppingCart();
+
+
+        Product product = new Product(2, null, false, "", null, "", null);
+
+        shoppingCart.addProduct(product);
+
+        assertEquals(shoppingCart.getTotalPrice(), 8.4);
+
+    }
 }
