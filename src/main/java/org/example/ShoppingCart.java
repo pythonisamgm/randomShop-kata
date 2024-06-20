@@ -52,12 +52,46 @@ public class ShoppingCart {
         }
     }
 
+
     public BigDecimal fishPrice(Product product) {
         return switch (product.getColor()) {
             case "blue" -> product.getBasePrice().add(BigDecimal.valueOf(0.1));
             case "gold" -> product.getBasePrice().multiply(BigDecimal.valueOf(100.0));
             default -> product.getBasePrice();
         };
+    }
+    public BigDecimal redMagicPrice(Product product){
+        Integer age = product.getAge(); // Retrieve age
+        if (age != null && age > 10) {
+            return BigDecimal.valueOf(3.5).multiply(BigDecimal.valueOf(0.5));
+        } else {
+            return BigDecimal.valueOf(3.5);
+
+        }
+    }
+    public BigDecimal blueMagicPrice(Product product){
+        Integer age = product.getAge(); // Retrieve age
+        if (age != null && age > 10) {
+            return BigDecimal.valueOf(5.0).multiply(BigDecimal.valueOf(0.5));
+        } else {
+            return BigDecimal.valueOf(5.0);
+        }
+    }
+    public BigDecimal greenMagicPrice(Product product){
+        Integer age = product.getAge(); // Retrieve age
+        if (age != null && age > 20) {
+            return BigDecimal.valueOf(4.40).multiply(BigDecimal.valueOf(1.2));
+        } else {
+            return BigDecimal.valueOf(4.40);
+        }
+    }
+    public BigDecimal blackMagicPrice(Product product){
+        Integer age = product.getAge(); // Retrieve age
+        if (age != null && age > 20) {
+            return BigDecimal.valueOf(6.80).multiply(BigDecimal.valueOf(1.2));
+        } else {
+            return BigDecimal.valueOf(6.80);
+        }
     }
 
     private BigDecimal calculatePrice(Product product) {
@@ -74,37 +108,16 @@ public class ShoppingCart {
         } else if (product.getName().startsWith("Magic: The Gathering")) {
             return switch (product.getColor()) {
                 case "red" -> {
-                    Integer age = product.getAge(); // Retrieve age
-                    if (age != null && age > 10) {
-                        yield BigDecimal.valueOf(3.5).multiply(BigDecimal.valueOf(0.5));
-                    } else {
-                        yield BigDecimal.valueOf(3.5);
-
-                    }
+                    yield redMagicPrice(product);
                 }
                 case "blue" -> {
-                    Integer age = product.getAge(); // Retrieve age
-                    if (age != null && age > 10) {
-                        yield BigDecimal.valueOf(5.0).multiply(BigDecimal.valueOf(0.5));
-                    } else {
-                        yield BigDecimal.valueOf(5.0);
-                    }
+                    yield blueMagicPrice(product);
                 }
                 case "green" -> {
-                    Integer age = product.getAge(); // Retrieve age
-                    if (age != null && age > 20) {
-                        yield BigDecimal.valueOf(4.40).multiply(BigDecimal.valueOf(1.2));
-                    } else {
-                        yield BigDecimal.valueOf(4.40);
-                    }
+                    yield greenMagicPrice(product);
                 }
                 case "black" -> {
-                    Integer age = product.getAge(); // Retrieve age
-                    if (age != null && age > 20) {
-                        yield BigDecimal.valueOf(6.80).multiply(BigDecimal.valueOf(1.2));
-                    } else {
-                        yield BigDecimal.valueOf(6.80);
-                    }
+                    yield blackMagicPrice(product);
                 }
                 case "brown" -> BigDecimal.valueOf(2.0);
                 default -> BigDecimal.valueOf(2.0);
