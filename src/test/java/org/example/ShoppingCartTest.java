@@ -18,17 +18,38 @@ class ShoppingCartTest {
         assertEquals(shoppingCart.getTotalPrice(), 3.5);
 
     }
+    @Test
+    void if_magic_card_is_red_and_over_10_years_multiply_by_0point5() {
+        ShoppingCart shoppingCart = new ShoppingCart();
+
+        Product product = new Product(null, 11, false, "red", null, "Magic: The Gathering - Maga Eternal", null);
+
+        shoppingCart.addProduct(product);
+        BigDecimal price = BigDecimal.valueOf(3.5).multiply(BigDecimal.valueOf(0.5));
+        assertEquals( price, BigDecimal.valueOf(shoppingCart.getTotalPrice()));
+
+    }
 
     @Test
     void if_magic_card_is_blue_return_5() {
         ShoppingCart shoppingCart = new ShoppingCart();
 
-        Product product = new Product(null, null, false, "blue", null, "Magic: The Gathering - Maga Eternal", null);
+        Product product = new Product(null, 2, false, "blue", null, "Magic: The Gathering - Maga Eternal", null);
 
         shoppingCart.addProduct(product);
 
         assertEquals(shoppingCart.getTotalPrice(), 5.0);
 
+    }
+
+    @Test
+    void if_magic_card_is_blue_and_over_ten_years_old_multiply_by_0point5(){
+        ShoppingCart shoppingCart = new ShoppingCart();
+        Product product = new Product(null, 11, false, "blue", null, "Magic: The Gathering - Maga Eternal", null);
+
+        shoppingCart.addProduct(product);
+        BigDecimal price = BigDecimal.valueOf(5.0).multiply(BigDecimal.valueOf(0.5));
+        assertEquals( price, BigDecimal.valueOf(shoppingCart.getTotalPrice()).setScale(2, BigDecimal.ROUND_HALF_UP));
     }
     @Test
     void if_magic_card_is_green_return_4point4() {
@@ -42,6 +63,15 @@ class ShoppingCartTest {
 
     }
     @Test
+    void if_magic_card_is_green_and_over_ten_years_old_multiply_by_1point2(){
+        ShoppingCart shoppingCart = new ShoppingCart();
+        Product product = new Product(null, 11, false, "green", null, "Magic: The Gathering - Maga Eternal", null);
+
+        shoppingCart.addProduct(product);
+        BigDecimal price = BigDecimal.valueOf(4.40).multiply(BigDecimal.valueOf(1.2));
+        assertEquals( price, BigDecimal.valueOf(shoppingCart.getTotalPrice()).setScale(2, BigDecimal.ROUND_HALF_UP));
+    }
+    @Test
     void if_magic_card_is_black_return_6point8() {
         ShoppingCart shoppingCart = new ShoppingCart();
 
@@ -51,6 +81,15 @@ class ShoppingCartTest {
 
         assertEquals(shoppingCart.getTotalPrice(), 6.8);
 
+    }
+    @Test
+    void if_magic_card_is_black_and_over_ten_years_old_multiply_by_1point2(){
+        ShoppingCart shoppingCart = new ShoppingCart();
+        Product product = new Product(null, 11, false, "black", null, "Magic: The Gathering - Maga Eternal", null);
+
+        shoppingCart.addProduct(product);
+        BigDecimal price = BigDecimal.valueOf(6.80).multiply(BigDecimal.valueOf(1.2));
+        assertEquals( price, BigDecimal.valueOf(shoppingCart.getTotalPrice()).setScale(2, BigDecimal.ROUND_HALF_UP));
     }
     @Test
     void if_magic_card_is_brown_return_2() {
@@ -122,6 +161,17 @@ class ShoppingCartTest {
         shoppingCart.addProduct(product);
 
         assertEquals(shoppingCart.getTotalPrice(), 100.0);
+
+    }
+    @Test
+    void if_product_is_regular_fish_get_basePrice() {
+        ShoppingCart shoppingCart = new ShoppingCart();
+        BigDecimal one = BigDecimal.valueOf(1.0);
+        Product product = new Product(null, null, false, "", one, "", null);
+
+        shoppingCart.addProduct(product);
+
+        assertEquals(shoppingCart.getTotalPrice(), 1.0);
 
     }
     @Test
