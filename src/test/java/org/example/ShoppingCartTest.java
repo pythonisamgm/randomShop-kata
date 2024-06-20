@@ -191,11 +191,71 @@ class ShoppingCartTest {
         ShoppingCart shoppingCart = new ShoppingCart();
 
 
-        Product product = new Product(6, null, false, "", null, "", null, false);
+        Product product = new Product(6, null, false, "", null, "", null, true);
 
         shoppingCart.addProduct(product);
 
-        assertEquals(shoppingCart.getTotalPrice(), 8.4);
+        assertEquals(shoppingCart.getTotalPrice(), 7.2);
+
+    }
+    @Test
+    void if_animal_isSpider_and_isStinky_multiply_price_for_0point5() {
+        ShoppingCart shoppingCart = new ShoppingCart();
+
+
+        Product product = new Product(6, null, true, "", null, "", null, true);
+
+        shoppingCart.addProduct(product);
+
+        assertEquals(shoppingCart.getTotalPrice(), 3.6);
+
+    }
+    @Test
+    void if_animal_isSpider_and_red_add_2_to_price() {
+        ShoppingCart shoppingCart = new ShoppingCart();
+
+
+        Product product = new Product(6, null, false, "red", null, "", null, true);
+
+        shoppingCart.addProduct(product);
+
+        assertEquals(shoppingCart.getTotalPrice(), 9.2);
+
+    }
+    @Test
+    void if_animal_isSpider_and_gold_add_3_to_price() {
+        ShoppingCart shoppingCart = new ShoppingCart();
+
+
+        Product product = new Product(6, null, false, "gold", null, "", null, true);
+
+        shoppingCart.addProduct(product);
+
+        assertEquals(shoppingCart.getTotalPrice(), 10.2);
+
+    }
+    @Test
+    void if_animal_isSpider_and_gold_and_stinky_add_3_to_price_and_multiply_for_0point5() {
+        ShoppingCart shoppingCart = new ShoppingCart();
+
+
+        Product product = new Product(6, null, true, "gold", null, "", null, true);
+
+        shoppingCart.addProduct(product);
+
+        assertEquals(shoppingCart.getTotalPrice(), 6.6);
+
+    }
+    @Test
+    void if_animal_isSpider_and_red_and_stinky_add_2_to_price_and_multiply_for_0point5() {
+        ShoppingCart shoppingCart = new ShoppingCart();
+
+
+        Product product = new Product(6, null, true, "red", null, "", null, true);
+
+        shoppingCart.addProduct(product);
+
+        assertEquals(shoppingCart.getTotalPrice(), 5.6);
 
     }
 }
