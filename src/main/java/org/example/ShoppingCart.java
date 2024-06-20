@@ -15,7 +15,8 @@ public class ShoppingCart {
     public double getTotalPrice() {
         return products.stream()
                 .map(this::calculatePrice)
-                .reduce(BigDecimal.ZERO, BigDecimal::add).doubleValue();
+                .reduce(BigDecimal.ZERO, BigDecimal::add)
+                .doubleValue();
     }
 
     public BigDecimal spiderPrice(Product product) {
@@ -60,7 +61,8 @@ public class ShoppingCart {
             default -> product.getBasePrice();
         };
     }
-    public BigDecimal redMagicPrice(Product product){
+
+    public BigDecimal redMagicPrice(Product product) {
         Integer age = product.getAge(); // Retrieve age
         if (age != null && age > 10) {
             return BigDecimal.valueOf(3.5).multiply(BigDecimal.valueOf(0.5));
@@ -69,7 +71,8 @@ public class ShoppingCart {
 
         }
     }
-    public BigDecimal blueMagicPrice(Product product){
+
+    public BigDecimal blueMagicPrice(Product product) {
         Integer age = product.getAge(); // Retrieve age
         if (age != null && age > 10) {
             return BigDecimal.valueOf(5.0).multiply(BigDecimal.valueOf(0.5));
@@ -77,7 +80,8 @@ public class ShoppingCart {
             return BigDecimal.valueOf(5.0);
         }
     }
-    public BigDecimal greenMagicPrice(Product product){
+
+    public BigDecimal greenMagicPrice(Product product) {
         Integer age = product.getAge(); // Retrieve age
         if (age != null && age > 20) {
             return BigDecimal.valueOf(4.40).multiply(BigDecimal.valueOf(1.2));
@@ -85,7 +89,8 @@ public class ShoppingCart {
             return BigDecimal.valueOf(4.40);
         }
     }
-    public BigDecimal blackMagicPrice(Product product){
+
+    public BigDecimal blackMagicPrice(Product product) {
         Integer age = product.getAge(); // Retrieve age
         if (age != null && age > 20) {
             return BigDecimal.valueOf(6.80).multiply(BigDecimal.valueOf(1.2));
@@ -93,6 +98,28 @@ public class ShoppingCart {
             return BigDecimal.valueOf(6.80);
         }
     }
+
+    public BigDecimal coloredMagicPrice(Product product) {
+
+        return switch (product.getColor()) {
+            case "red" -> {
+                yield redMagicPrice(product);
+            }
+            case "blue" -> {
+
+                yield blueMagicPrice(product);
+            }
+            case "green" -> {
+                yield greenMagicPrice(product);
+            }
+            case "black" -> {
+                yield blackMagicPrice(product);
+            }
+            case "brown" -> BigDecimal.valueOf(2.0);
+            default -> BigDecimal.valueOf(2.0);
+        };
+    }
+
 
     private BigDecimal calculatePrice(Product product) {
         if (product.getNumberOfLegs() != null && product.isSpider()) {
@@ -106,26 +133,9 @@ public class ShoppingCart {
         } else if (product.getName().equals("Magic: The Gathering - Black Lotus")) {
             return BigDecimal.valueOf(40000.0);
         } else if (product.getName().startsWith("Magic: The Gathering")) {
-            return switch (product.getColor()) {
-                case "red" -> {
-                    yield redMagicPrice(product);
-                }
-                case "blue" -> {
-                    yield blueMagicPrice(product);
-                }
-                case "green" -> {
-                    yield greenMagicPrice(product);
-                }
-                case "black" -> {
-                    yield blackMagicPrice(product);
-                }
-                case "brown" -> BigDecimal.valueOf(2.0);
-                default -> BigDecimal.valueOf(2.0);
-            };
-        } else {
-            return product.getSellPrice();
-
+           return coloredMagicPrice(product);
         }
+        return product.getSellPrice();
     }
 }
 
