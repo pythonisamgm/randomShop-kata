@@ -10,8 +10,11 @@ public class Product {
     private final BigDecimal basePrice;
     private final String name;
     private final BigDecimal sellPrice;
+    private final boolean isSpider;
 
-    public Product(Integer numberOfLegs, Integer age, boolean isStinky, String color, BigDecimal basePrice, String name, BigDecimal sellPrice) {
+
+
+    public Product(Integer numberOfLegs, Integer age, boolean isStinky, String color, BigDecimal basePrice, String name, BigDecimal sellPrice, boolean isSpider) {
         this.numberOfLegs = numberOfLegs;
         this.age = age;
         this.isStinky = isStinky;
@@ -19,6 +22,8 @@ public class Product {
         this.basePrice = basePrice;
         this.name = name;
         this.sellPrice = sellPrice;
+        this.isSpider = isSpider;
+
     }
 
     public Integer getNumberOfLegs() {
@@ -47,5 +52,9 @@ public class Product {
 
     public BigDecimal getSellPrice() {
         return sellPrice;
+    }
+
+    public boolean isSpider() {
+        return isSpider;
     }
 }

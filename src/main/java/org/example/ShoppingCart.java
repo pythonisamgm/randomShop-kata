@@ -20,11 +20,22 @@ public class ShoppingCart {
     }
 
     private BigDecimal calculatePrice(Product product) {
-        if (product.getNumberOfLegs() != null) {
+        if (product.getNumberOfLegs() != null
+        && product.isSpider()){
+            BigDecimal price = BigDecimal.valueOf(1.2 *product.getNumberOfLegs());
+            if (product.isStinky()){
+                price = BigDecimal.valueOf(1.2 *product.getNumberOfLegs()*0.5);}
+            else if ("red".equals(product.getColor())){
+                price = price.add(BigDecimal.valueOf(2.0));
+            }else if ("gold".equals(product.getColor())){
+                price = price.add(BigDecimal.valueOf(3.0));
+            }
+        return price;
+        }
+        else if (product.getNumberOfLegs() != null) {
             return BigDecimal.valueOf(4.2 * product.getNumberOfLegs());
         }
 
-        //quitar lo de los colores. Editar lo de que si tiene edad. Que ponga otra cosa...
 
         else if (product.getAge() != null &&
                 product.getColor() == null){
