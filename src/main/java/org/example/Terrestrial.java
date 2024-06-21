@@ -8,7 +8,7 @@ public class Terrestrial implements IProduct {
     private boolean isStinky;
     private String name;
 
-    public Terrestrial() {
+    public Terrestrial(BigDecimal numberOfLegs, String color, boolean isStinky, String name) {
         this.numberOfLegs = numberOfLegs;
         this.color = color;
         this.isStinky = isStinky;
@@ -18,9 +18,9 @@ public class Terrestrial implements IProduct {
 
     public BigDecimal pricePerLeg() {
         if (this.name.equals("spider")){
-            return numberOfLegs.multiply(BigDecimal.valueOf(1.2));
+            return getNumberOfLegs().multiply(BigDecimal.valueOf(1.2));
         }else{
-            return numberOfLegs.multiply(BigDecimal.valueOf(4.2));}
+            return getNumberOfLegs().multiply(BigDecimal.valueOf(4.2));}
     }
 
     public BigDecimal pricePerColor() {
@@ -40,6 +40,10 @@ public class Terrestrial implements IProduct {
         return (pricePerColor().add(pricePerLeg())).multiply(BigDecimal.valueOf(0));}
     }
 
+    @Override
+    public BigDecimal getBasePrice() {
+        return null;
+    }
 
 
     public String getColor() {
@@ -75,7 +79,7 @@ public class Terrestrial implements IProduct {
     }
 
     @Override
-    public int getAge() {
+    public Integer getAge() {
         return 0;
     }
 }

@@ -3,6 +3,7 @@ package org.example;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.example.Terrestrial;
 import org.example.Fish;
 import org.example.Gourmet;
@@ -10,7 +11,7 @@ import org.example.MagicCards;
 
 public class ShoppingCart {
 
-    private final List<Object> products = new ArrayList<>();
+    private final List<IProduct> products = new ArrayList<>();
 
     public void addProduct(IProduct product) {
         products.add(product);
@@ -18,10 +19,64 @@ public class ShoppingCart {
 
     public double getTotalPrice() {
         return products.stream()
-                .map(products::calculatePrice)
+                .map(IProduct::calculateProductPrice)
                 .reduce(BigDecimal.ZERO, BigDecimal::add)
                 .doubleValue();
     }
+
+    public void addSampleProducts(){
+    Gourmet wine = new Gourmet(false, 10);
+    Gourmet cheese = new Gourmet(true, 10);
+
+    MagicCards redMagic = new MagicCards("red", null, 9);
+    MagicCards blueMagic = new MagicCards("blue", null, 9);
+    MagicCards greenMagic = new MagicCards("green", null, 9);
+    MagicCards blackMagic = new MagicCards("black", null, 9);
+    MagicCards redOldMagic = new MagicCards("red", null, 11);
+    MagicCards blueOldMagic = new MagicCards("blue", null, 11);
+    MagicCards greenOldMagic = new MagicCards("green", null, 21);
+    MagicCards blackOldMagic = new MagicCards("black", null, 21);
+    MagicCards blackLotus = new MagicCards(null, "blackLotus", null);
+    //blackLotus old
+
+    Terrestrial animal = new Terrestrial((BigDecimal.valueOf(3)), null, false, null);
+    Terrestrial spider = new Terrestrial((BigDecimal.valueOf(6)), null, false, "spider");
+    Terrestrial spiderRed = new Terrestrial((BigDecimal.valueOf(6)), "red", false, "spider");
+    Terrestrial spiderGold = new Terrestrial((BigDecimal.valueOf(6)), "gold", false, "spider");
+    Terrestrial spiderStinky = new Terrestrial((BigDecimal.valueOf(6)), null, true, "spider");
+    Terrestrial spiderRedStinky = new Terrestrial((BigDecimal.valueOf(6)), "red", true, "spider");
+    Terrestrial spiderGoldStinky = new Terrestrial((BigDecimal.valueOf(6)), "gold", true, "spider");
+
+    Fish blueFish = new Fish("blue", (BigDecimal.valueOf(0)));
+    Fish goldFish = new Fish("gold", (BigDecimal.valueOf(1)));
+    Fish fish = new Fish(null, (BigDecimal.valueOf(0)));
+
+        products.add(wine);
+        products.add(cheese);
+        products.add(redMagic);
+        products.add(redOldMagic);
+        products.add(blueMagic);
+        products.add(blueOldMagic);
+        products.add(greenMagic);
+        products.add(greenOldMagic);
+        products.add(blackMagic);
+        products.add(blackOldMagic);
+        products.add(animal);
+        products.add(spider);
+        products.add(spiderGold);
+        products.add(spiderStinky);
+        products.add(spiderRedStinky);
+        products.add(spiderGoldStinky);
+        products.add(spiderRed);
+        products.add(blueFish);
+        products.add(goldFish);
+        products.add(fish);
+
+    }
+
+
+
+
 
 /*
     public BigDecimal spiderPrice(Product product) {
@@ -121,12 +176,11 @@ public class ShoppingCart {
         };
     }*/
 
-
-
+/*
     private BigDecimal calculatePrice(IProduct product) {
         if (product.getNumberOfLegs() != null && product.getName().equalsIgnoreCase("spider")) {
-
-            return product.calculateProductPrice();
+            addSpider();
+            return spider.calculateProductPrice();
         } else if (product.getNumberOfLegs() != null) {
             return product.calculateProductPrice();
         } else if (product.getAge() != null && product.getColor() == null) {
@@ -137,9 +191,9 @@ public class ShoppingCart {
             return BigDecimal.valueOf(40000.0);
         } else if (product.getName().startsWith("Magic: The Gathering")) {
             return product.calculateProductPrice();
-        }
-        return product.getSellPrice();
-    }
+        }*/
+    //return product.getSellPrice();
 }
+
 
 

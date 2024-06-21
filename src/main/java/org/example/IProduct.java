@@ -8,8 +8,9 @@ public interface IProduct {
     BigDecimal getNumberOfLegs();
     String getColor();
     boolean isStinky();
-    int getAge();
+    Integer getAge();
     BigDecimal calculateProductPrice();
+    BigDecimal getBasePrice();
 
 
 }

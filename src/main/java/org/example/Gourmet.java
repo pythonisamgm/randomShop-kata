@@ -1,14 +1,18 @@
 package org.example;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Gourmet implements IProduct {
     private boolean isStinky;
-    private int age;
+    private Integer age;
+    private final List<Object> products;
 
-    public Gourmet() {
+    public Gourmet(boolean isStinky, Integer age) {
         this.isStinky = isStinky;
         this.age = age;
+        this.products = new ArrayList<>();
     }
 
 @Override
@@ -20,6 +24,11 @@ public class Gourmet implements IProduct {
         }
     }
 
+    @Override
+    public BigDecimal getBasePrice() {
+        return null;
+    }
+
     public boolean isStinky() {
         return isStinky;
     }
@@ -28,11 +37,11 @@ public class Gourmet implements IProduct {
         isStinky = stinky;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 

@@ -5,9 +5,9 @@ import java.math.BigDecimal;
 public class MagicCards implements IProduct {
     private String color;
     private String name;
-    private int age;
+    private Integer age;
 
-    public MagicCards() {
+    public MagicCards(String color, String name, Integer age) {
         this.color = color;
         this.name = name;
         this.age = age;
@@ -43,7 +43,15 @@ public class MagicCards implements IProduct {
 
     @Override
     public BigDecimal calculateProductPrice() {
+       /* if (this.getName().equalsIgnoreCase("blackLotus")){
+            return BigDecimal.valueOf(40000);
+        }*/
         return pricePerColor();
+    }
+
+    @Override
+    public BigDecimal getBasePrice() {
+        return null;
     }
 
 
@@ -63,11 +71,11 @@ public class MagicCards implements IProduct {
         this.name = name;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
