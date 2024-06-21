@@ -23,12 +23,12 @@ public class Fish implements IProduct {
     }*/
     @Override
     public BigDecimal calculateProductPrice() {
-        if (getColor().equalsIgnoreCase("blue") && this.getBasePrice() != null) {
+        if (color.equalsIgnoreCase("blue") && basePrice != null) {
             return BigDecimal.valueOf(0.1).add(getBasePrice());
         } else if (getColor().equalsIgnoreCase("gold") && this.getBasePrice() != null) {
             return BigDecimal.valueOf(100.0).multiply(getBasePrice());
         } else{
-            return getBasePrice();
+            return BigDecimal.valueOf(0);
         }
 
     }

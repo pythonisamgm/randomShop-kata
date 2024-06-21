@@ -136,20 +136,21 @@ class ShoppingCartTest {
         assertEquals(shoppingCart.getTotalPrice(), 110.0);
 
     }
+//no esta entrando por la funcion, directamente pasa al else
 
-    @Test
-    void if_product_is_blue_fish_add_0point1_to_basePrice() {
+@Test
+void if_product_is_blue_fish_add_0point1_to_basePrice() {
         ShoppingCart shoppingCart = new ShoppingCart();
         BigDecimal zero = new BigDecimal(0);
 
-        Product product = new Product(null, null, false, "blue", BigDecimal.valueOf(0), "", null);
+        IProduct product = new Fish("blue", BigDecimal.valueOf(0));
 
         shoppingCart.addProduct(product);
 
         assertEquals(shoppingCart.getTotalPrice(), 0.1);
 
     }
-    ////set basePrice to 1
+
     //@Test
     //void if_product_is_golden_fish_multiply_100_for_basePrice() {
     //    ShoppingCart shoppingCart = new ShoppingCart();

@@ -4,10 +4,6 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.example.Terrestrial;
-import org.example.Fish;
-import org.example.Gourmet;
-import org.example.MagicCards;
 
 public class ShoppingCart {
 
@@ -24,7 +20,7 @@ public class ShoppingCart {
                 .doubleValue();
     }
 
-    public void addSampleProducts(){
+    /*public void addSampleProducts(){
     Gourmet wine = new Gourmet(false, 10);
     Gourmet cheese = new Gourmet(true, 10);
 
@@ -72,7 +68,7 @@ public class ShoppingCart {
         products.add(goldFish);
         products.add(fish);
 
-    }
+    }*/
 
 
 
