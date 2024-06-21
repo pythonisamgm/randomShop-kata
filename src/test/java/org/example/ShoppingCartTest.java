@@ -143,7 +143,7 @@ class ShoppingCartTest {
         ShoppingCart shoppingCart = new ShoppingCart();
         BigDecimal zero = new BigDecimal(0);
 
-        Product product = new Product(null, null, false, "blue", zero, "", null, false);
+        Product product = new Product(null, null, false, "blue", BigDecimal.valueOf(0), "", null, false);
 
         shoppingCart.addProduct(product);
 

@@ -3,6 +3,11 @@ package org.example;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import org.example.Fish;
+import org.example.Pets;
+import org.example.Terrestrial;
+import org.example.Spider;
 
 public class ShoppingCart {
 
@@ -20,21 +25,18 @@ public class ShoppingCart {
     }
 
     public BigDecimal spiderPrice(Product product) {
-        {
-            BigDecimal price = BigDecimal.valueOf(1.2).multiply(BigDecimal.valueOf(product.getNumberOfLegs()));
 
+            BigDecimal price = BigDecimal.valueOf(1.2).multiply(BigDecimal.valueOf(product.getNumberOfLegs()));
             if (product.isStinky()) {
                 price = price.multiply(BigDecimal.valueOf(0.5));
             }
-
             if ("red".equalsIgnoreCase(product.getColor())) {
                 price = price.add(BigDecimal.valueOf(2.0));
             } else if ("gold".equalsIgnoreCase(product.getColor())) {
                 price = price.add(BigDecimal.valueOf(3.0));
             }
-
             return price;
-        }
+
     }
 
     public BigDecimal animalPrice(Product product) {
@@ -121,6 +123,7 @@ public class ShoppingCart {
     }
 
 
+
     private BigDecimal calculatePrice(Product product) {
         if (product.getNumberOfLegs() != null && product.isSpider()) {
             return spiderPrice(product);
@@ -133,7 +136,7 @@ public class ShoppingCart {
         } else if (product.getName().equals("Magic: The Gathering - Black Lotus")) {
             return BigDecimal.valueOf(40000.0);
         } else if (product.getName().startsWith("Magic: The Gathering")) {
-           return coloredMagicPrice(product);
+            return coloredMagicPrice(product);
         }
         return product.getSellPrice();
     }
