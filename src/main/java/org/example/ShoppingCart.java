@@ -22,7 +22,7 @@ public class ShoppingCart {
     public BigDecimal spiderPrice(Product product) {
 
             BigDecimal price = BigDecimal.valueOf(1.2).multiply(BigDecimal.valueOf(product.getNumberOfLegs()));
-            if (product.isStinky()) {
+            if ((product.isStinky())) {
                 price = price.multiply(BigDecimal.valueOf(0.5));
             }
             if ("red".equalsIgnoreCase(product.getColor())) {
@@ -119,7 +119,7 @@ public class ShoppingCart {
 
 
     private BigDecimal calculatePrice(Product product) {
-        if (product.getNumberOfLegs() != null && product.isSpider()) {
+        if (product.getNumberOfLegs() != null && product.getName().equalsIgnoreCase("spider")) {
             return spiderPrice(product);
         } else if (product.getNumberOfLegs() != null) {
             return animalPrice(product);
