@@ -3,22 +3,27 @@ package org.example;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import org.example.Terrestrial;
+import org.example.Fish;
+import org.example.Gourmet;
+import org.example.MagicCards;
 
 public class ShoppingCart {
 
-    private final List<Product> products = new ArrayList<>();
+    private final List<Object> products = new ArrayList<>();
 
-    public void addProduct(Product product) {
+    public void addProduct(IProduct product) {
         products.add(product);
     }
 
     public double getTotalPrice() {
         return products.stream()
-                .map(this::calculatePrice)
+                .map(products::calculatePrice)
                 .reduce(BigDecimal.ZERO, BigDecimal::add)
                 .doubleValue();
     }
 
+/*
     public BigDecimal spiderPrice(Product product) {
 
             BigDecimal price = BigDecimal.valueOf(1.2).multiply(BigDecimal.valueOf(product.getNumberOfLegs()));
@@ -114,23 +119,24 @@ public class ShoppingCart {
             case "brown" -> BigDecimal.valueOf(2.0);
             default -> BigDecimal.valueOf(2.0);
         };
-    }
+    }*/
 
 
 
-    private BigDecimal calculatePrice(Product product) {
+    private BigDecimal calculatePrice(IProduct product) {
         if (product.getNumberOfLegs() != null && product.getName().equalsIgnoreCase("spider")) {
-            return spiderPrice(product);
+
+            return product.calculateProductPrice();
         } else if (product.getNumberOfLegs() != null) {
-            return animalPrice(product);
+            return product.calculateProductPrice();
         } else if (product.getAge() != null && product.getColor() == null) {
-            return gourmetPrice(product);
+            return product.calculateProductPrice();
         } else if (product.getColor() != null && product.getBasePrice() != null) {
-            return fishPrice(product);
+            return product.calculateProductPrice();
         } else if (product.getName().equals("Magic: The Gathering - Black Lotus")) {
             return BigDecimal.valueOf(40000.0);
         } else if (product.getName().startsWith("Magic: The Gathering")) {
-            return coloredMagicPrice(product);
+            return product.calculateProductPrice();
         }
         return product.getSellPrice();
     }

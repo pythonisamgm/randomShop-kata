@@ -2,13 +2,13 @@ package org.example;
 
 import java.math.BigDecimal;
 
-public class Terrestrial {
+public class Terrestrial implements IProduct {
     private BigDecimal numberOfLegs;
     private String color;
     private boolean isStinky;
     private String name;
 
-    public Terrestrial(BigDecimal numberOfLegs, String color, boolean isStinky, String name) {
+    public Terrestrial() {
         this.numberOfLegs = numberOfLegs;
         this.color = color;
         this.isStinky = isStinky;
@@ -23,20 +23,21 @@ public class Terrestrial {
             return numberOfLegs.multiply(BigDecimal.valueOf(4.2));}
     }
 
-    public BigDecimal pricePerColor(String color) {
-        if (color.equalsIgnoreCase("red")) {
+    public BigDecimal pricePerColor() {
+        if (getColor().equalsIgnoreCase("red")) {
             return BigDecimal.valueOf(2.0);
-        } else if (color.equalsIgnoreCase("gold")) {
+        } else if (getColor().equalsIgnoreCase("gold")) {
             return BigDecimal.valueOf(3.0);
         } else {
             return BigDecimal.valueOf(0.0);
         }
     }
-    public BigDecimal totalPrice() {
+    @Override
+    public BigDecimal calculateProductPrice() {
         if (this.isStinky()){
-            return (pricePerColor(color).add(pricePerLeg())).multiply(BigDecimal.valueOf(0.5));
+            return (pricePerColor().add(pricePerLeg())).multiply(BigDecimal.valueOf(0.5));
         }else{
-        return (pricePerColor(color).add(pricePerLeg())).multiply(BigDecimal.valueOf(0));}
+        return (pricePerColor().add(pricePerLeg())).multiply(BigDecimal.valueOf(0));}
     }
 
 
@@ -71,5 +72,10 @@ public class Terrestrial {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public int getAge() {
+        return 0;
     }
 }

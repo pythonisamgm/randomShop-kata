@@ -2,20 +2,17 @@ package org.example;
 
 import java.math.BigDecimal;
 
-public class Gourmet {
+public class Gourmet implements IProduct {
     private boolean isStinky;
     private int age;
 
-    public Gourmet(boolean isStinky, int age) {
+    public Gourmet() {
         this.isStinky = isStinky;
         this.age = age;
     }
 
-    public BigDecimal stinkyCheesePrice(Product product) {
-        return BigDecimal.valueOf(10.0 * product.getAge());
-    }
-
-    public BigDecimal totalPrice(boolean isStinky) {
+@Override
+    public BigDecimal calculateProductPrice() {
         if (this.isStinky()) {
             return BigDecimal.valueOf(10.0 * this.getAge());
         } else {
@@ -37,5 +34,20 @@ public class Gourmet {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    @Override
+    public String getName() {
+        return "";
+    }
+
+    @Override
+    public BigDecimal getNumberOfLegs() {
+        return null;
+    }
+
+    @Override
+    public String getColor() {
+        return "";
     }
 }

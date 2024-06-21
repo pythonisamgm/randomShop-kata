@@ -1,7 +1,7 @@
 package org.example;
 import java.math.BigDecimal;
 
-public class Fish {
+public class Fish implements IProduct {
  private String color;
     public Fish(String color) {
         this.color=color;
@@ -18,8 +18,34 @@ public class Fish {
         }
 
     }
-    public BigDecimal totalPrice() {
+    @Override
+    public BigDecimal calculateProductPrice() {
         return pricePerColor(color);
+    }
+
+    @Override
+    public String getName() {
+        return "";
+    }
+
+    @Override
+    public BigDecimal getNumberOfLegs() {
+        return null;
+    }
+
+    @Override
+    public String getColor() {
+        return "";
+    }
+
+    @Override
+    public boolean isStinky() {
+        return false;
+    }
+
+    @Override
+    public int getAge() {
+        return 0;
     }
 }
 
