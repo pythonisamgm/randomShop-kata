@@ -136,7 +136,7 @@ class ShoppingCartTest {
         assertEquals(shoppingCart.getTotalPrice(), 110.0);
 
     }
-    //set basePrice to 0
+
     @Test
     void if_product_is_blue_fish_add_0point1_to_basePrice() {
         ShoppingCart shoppingCart = new ShoppingCart();
