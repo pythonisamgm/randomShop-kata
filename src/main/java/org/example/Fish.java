@@ -1,16 +1,13 @@
 package org.example;
-import org.example.Product;
 import java.math.BigDecimal;
 
-public class Fish extends Pets{
-
-    public Fish(BigDecimal numberOfLegs, String color, boolean isStinky) {
-        super(numberOfLegs, color, isStinky);
-        this.setNumberOfLegs(BigDecimal.valueOf(0));
-        this.setStinky(false);
+public class Fish {
+ private String color;
+    public Fish(String color) {
+        this.color=color;
     }
 
-    @Override
+
     public BigDecimal pricePerColor(String color) {
         if (color.equalsIgnoreCase("blue")) {
             return BigDecimal.valueOf(0.1);
@@ -21,5 +18,8 @@ public class Fish extends Pets{
         }
 
     }
+    public BigDecimal totalPrice() {
+        return pricePerColor(color);
     }
+}
 

@@ -3,11 +3,6 @@ package org.example;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import org.example.Fish;
-import org.example.Pets;
-import org.example.Terrestrial;
-import org.example.Spider;
 
 public class ShoppingCart {
 
@@ -70,7 +65,6 @@ public class ShoppingCart {
             return BigDecimal.valueOf(3.5).multiply(BigDecimal.valueOf(0.5));
         } else {
             return BigDecimal.valueOf(3.5);
-
         }
     }
 
