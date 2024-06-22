@@ -10,6 +10,7 @@ The initial code version consisted of a `ShoppingCart` class with a `calculatePr
 
 ### Issues Identified
 
+
 1. **Complexity and Readability**: The `calculatePrice` method was complex, handling multiple conditions, making it hard to read and maintain.
 2. **Code Duplication**: Some logic was repeated in different parts of the method.
 3. **Lack of Modularity**: The single method was responsible for too many different tasks.
