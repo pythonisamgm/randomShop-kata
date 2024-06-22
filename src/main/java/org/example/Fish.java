@@ -17,8 +17,6 @@ public class Fish implements IProduct {
         } else if (color.equalsIgnoreCase("gold") && basePrice != null) {
             return basePrice.multiply(BigDecimal.valueOf(100.0));
             // this doesnt work for some reason return this.getBasePrice().multiply(BigDecimal.valueOf(100.0));
-
-            //this doesnt pass if not with an empty string
         } else if(color.equalsIgnoreCase("") && basePrice != null){
             return BigDecimal.valueOf(0);
         }return BigDecimal.valueOf(0);
