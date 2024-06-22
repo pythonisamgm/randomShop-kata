@@ -7,21 +7,9 @@ public class Fish implements IProduct {
     public Fish(String color, BigDecimal basePrice) {
         this.color=color;
         this.basePrice=basePrice;
-
     }
 
 
-    /*public BigDecimal pricePerColor(String color) {
-        if (color.equalsIgnoreCase("blue") && this.basePrice != null) {
-            return BigDecimal.valueOf(0.1);
-        } else if (color.equalsIgnoreCase("gold") && this.basePrice != null) {
-            return BigDecimal.valueOf(100.0);
-        } else{
-            return BigDecimal.valueOf(0);
-        }
-
-    }*/
-    //ths test works if i remove the .add(getBasePrice) info
     @Override
     public BigDecimal calculateProductPrice() {
         if (color.equalsIgnoreCase("blue") && basePrice != null) {
