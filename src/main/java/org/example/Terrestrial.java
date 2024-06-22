@@ -16,28 +16,51 @@ public class Terrestrial implements IProduct {
     }
 
 
-    public BigDecimal pricePerLeg() {
-        if (this.name.equals("spider")){
+    /*public BigDecimal pricePerLeg() {
+        if (this.name.equals("spider")) {
             return getNumberOfLegs().multiply(BigDecimal.valueOf(1.2));
-        }else{
-            return getNumberOfLegs().multiply(BigDecimal.valueOf(4.2));}
+        } else {
+            return getNumberOfLegs().multiply(BigDecimal.valueOf(4.2));
+        }
+    }*/
+    public BigDecimal pricePerLeg() {
+        if (this.name == null) {
+            return getNumberOfLegs().multiply(BigDecimal.valueOf(4.2));
+        } else if (this.name.equals("spider")) {
+            return getNumberOfLegs().multiply(BigDecimal.valueOf(1.2));
+        }
+        return getNumberOfLegs().multiply(BigDecimal.valueOf(4.2));
     }
 
+
+    /*public BigDecimal pricePerColor() {
+    if (getColor().equalsIgnoreCase("red")) {
+        return BigDecimal.valueOf(2.0);
+    } else if (getColor().equalsIgnoreCase("gold")) {
+        return BigDecimal.valueOf(3.0);
+    } else {
+        return BigDecimal.valueOf(0.0);
+    }
+}*/
     public BigDecimal pricePerColor() {
-        if (getColor().equalsIgnoreCase("red")) {
+        if (getColor() == null) {
+            return BigDecimal.valueOf(0.0);
+        } else if (getColor().equalsIgnoreCase("red")) {
             return BigDecimal.valueOf(2.0);
         } else if (getColor().equalsIgnoreCase("gold")) {
             return BigDecimal.valueOf(3.0);
-        } else {
-            return BigDecimal.valueOf(0.0);
         }
+        return BigDecimal.valueOf(0.0);
     }
+
+
     @Override
     public BigDecimal calculateProductPrice() {
-        if (this.isStinky()){
+        if (this.isStinky()) {
             return (pricePerColor().add(pricePerLeg())).multiply(BigDecimal.valueOf(0.5));
-        }else{
-        return (pricePerColor().add(pricePerLeg())).multiply(BigDecimal.valueOf(0));}
+        } else {
+            return (pricePerColor().add(pricePerLeg()));
+        }
     }
 
     @Override

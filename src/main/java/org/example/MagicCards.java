@@ -14,7 +14,7 @@ public class MagicCards implements IProduct {
     }
 
     public BigDecimal pricePerColor() {
-        if (color.equalsIgnoreCase("red")) {
+        if(color.equalsIgnoreCase("red")) {
             if (getAge() > 10) {
                 return BigDecimal.valueOf(3.5).multiply(BigDecimal.valueOf(0.5));
             }
@@ -43,10 +43,14 @@ public class MagicCards implements IProduct {
 
     @Override
     public BigDecimal calculateProductPrice() {
-       /* if (this.getName().equalsIgnoreCase("blackLotus")){
-            return BigDecimal.valueOf(40000);
-        }*/
-        return pricePerColor();
+       if (this.getName() == null){
+           return pricePerColor();
+       }
+       else if (this.getName().equalsIgnoreCase("blackLotus")){
+           return BigDecimal.valueOf(40000);
+        }
+
+        else {return pricePerColor();}
     }
 
     @Override

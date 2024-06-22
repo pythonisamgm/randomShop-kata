@@ -21,15 +21,19 @@ public class Fish implements IProduct {
         }
 
     }*/
+    //ths test works if i remove the .add(getBasePrice) info
     @Override
     public BigDecimal calculateProductPrice() {
         if (color.equalsIgnoreCase("blue") && basePrice != null) {
-            return BigDecimal.valueOf(0.1).add(getBasePrice());
-        } else if (getColor().equalsIgnoreCase("gold") && this.getBasePrice() != null) {
-            return BigDecimal.valueOf(100.0).multiply(getBasePrice());
-        } else{
+            return basePrice.add(BigDecimal.valueOf(0.1));
+        } else if (color.equalsIgnoreCase("gold") && basePrice != null) {
+            return basePrice.multiply(BigDecimal.valueOf(100.0));
+            // this doesnt work for some reason return this.getBasePrice().multiply(BigDecimal.valueOf(100.0));
+
+            //this doesnt pass if not with an empty string
+        } else if(color.equalsIgnoreCase("") && basePrice != null){
             return BigDecimal.valueOf(0);
-        }
+        }return BigDecimal.valueOf(0);
 
     }
 
