@@ -32,16 +32,6 @@ public class Terrestrial implements IProduct {
         return getNumberOfLegs().multiply(BigDecimal.valueOf(4.2));
     }
 
-
-    /*public BigDecimal pricePerColor() {
-    if (getColor().equalsIgnoreCase("red")) {
-        return BigDecimal.valueOf(2.0);
-    } else if (getColor().equalsIgnoreCase("gold")) {
-        return BigDecimal.valueOf(3.0);
-    } else {
-        return BigDecimal.valueOf(0.0);
-    }
-}*/
     public BigDecimal pricePerColor() {
         if (getColor() == null) {
             return BigDecimal.valueOf(0.0);
@@ -49,8 +39,7 @@ public class Terrestrial implements IProduct {
             return BigDecimal.valueOf(2.0);
         } else if (getColor().equalsIgnoreCase("gold")) {
             return BigDecimal.valueOf(3.0);
-        }
-        return BigDecimal.valueOf(0.0);
+        }return BigDecimal.valueOf(0.0);
     }
 
 
